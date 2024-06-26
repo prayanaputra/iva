@@ -5,37 +5,8 @@ import numpy as np
 # Load the model
 model = pickle.load(open('diabetes_model.sav', 'rb'))  # Ensure to replace 'diabetes_model.sav' with your actual model file
 
-# Set page config
-st.set_page_config(
-    page_title="Diabetes Prediction",
-    page_icon="🩺",
-    layout="centered",
-    initial_sidebar_state="expanded"
-)
-
-# Define the front end interface
-st.markdown(
-    """
-    <style>
-    .main {
-        background-color: #f0f2f6;
-    }
-    h1 {
-        color: #ff4b4b;
-        text-align: center;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
 
 st.title('Diabetes Prediction App')
-
-st.markdown(
-    """
-    ### Please enter the following details:
-    """
-)
 
 # Layout for input fields
 col1, col2 = st.columns(2)
@@ -64,20 +35,11 @@ if st.button('Predict'):
 
     st.markdown(
         """
-        ### Prediction Result:
+        ### Hasil Prediksi:
         """
     )
 
     if prediction[0] == 0:
-        st.success('The person is not diabetic.')
+        st.success('Pasien ini tidak Terkena Diabetes')
     else:
-        st.error('The person is diabetic.')
-
-# Footer
-st.markdown(
-    """
-    <hr>
-    <p style="text-align:center;">with Kelompok 1 - 21S1SI-Machine2(SI163) </p>
-    """,
-    unsafe_allow_html=True
-)
+        st.error('Pasien ini Terkena Diabetes')
